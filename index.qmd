@@ -413,7 +413,7 @@ ggplot(dat_homelessness, aes(x = date, y = n)) +
 
 ## Data visualization - Interactive Plotly Chart
 # Create the ggplot object
-p <- ggplot(dat_homelessness, aes(x = date, y = n)) +
+p <- ggplot(dat_homelessness, aes(x = date, y = n, group = category)) +
   
   # Map color to the capitalized category for the tooltip
   geom_line(aes(color = category), 
@@ -424,16 +424,7 @@ p <- ggplot(dat_homelessness, aes(x = date, y = n)) +
     "<br>Count:", n,
     "<br>Category:", str_to_title(category) # This is the key change
   )), size = 1) +
-  
-  # Add the vertical dashed line for COVID-19
-  geom_vline(
-    xintercept = as.Date("2020-03-01"),
-    color = "grey50",
-    linetype = "dashed",
-    linewidth = 0.5,
-    alpha = 0.7
-  ) +
-  
+
   # Add a dashed line segment to indicate the data gap for Unsheltered
   geom_segment(
     aes(x = as.Date("2020-01-01"), y = 2037,
@@ -455,15 +446,33 @@ p <- ggplot(dat_homelessness, aes(x = date, y = n)) +
   theme_minimal() +
   scale_x_date(breaks = "3 years", date_labels = "%Y")
 
-# Convert the ggplot object to plotly and position the legend
-ggplotly(p) %>%
+# Convert the ggplot object to a plotly object
+p_plotly <- ggplotly(p, tooltip = "text")
+
+# Style the traces to remove unwanted tooltips
+p_plotly <- p_plotly %>%
+  plotly::layout(shapes = list(
+    list(
+      type = "line",
+      yref = "paper",
+      xref = "x",
+      x0 = as.Date("2020-03-01"),
+      y0 = 0,
+      x1 = as.Date("2020-03-01"),
+      y1 = 1,
+      line = list(color = "grey50", dash = "dash")
+    )
+  )) %>%
+  plotly::style(hoverinfo = "none", traces = c(1, 2)) %>% # Traces 1 and 3 are the lines
   plotly::layout(legend = list(
     x = 0.3,
-    y = -0.25, # Adjust this value to control vertical position
+    y = -0.3,
     xanchor = 'left',
     yanchor = 'bottom',
     orientation = 'h'
   ))
+
+p_plotly
 ```
 
 #### Sheltered
