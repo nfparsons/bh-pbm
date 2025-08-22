@@ -1,6 +1,7 @@
 ---
 title: "Behavioral Health Population-based Measures"
 subtitle: ""
+editor: source
 ---
 
 ```{r}
@@ -265,10 +266,9 @@ ggmap::register_google(key = google_api_key)
 sessionInfo()
 ```
 
-
 # Social Determinants of Behavioral Health
 
-These measures are often considered causal or impactful because they reflect underlying social and environmental factors that drive behavioral health outcomes. 
+These measures are often considered causal or impactful because they reflect underlying social and environmental factors that drive behavioral health outcomes.
 
 ## Rate of Unstable Housing and Homelessness
 
@@ -379,14 +379,13 @@ dat_homelessness <- tribble(
 )
 ```
 
-
 #### Unsheltered
 
 People living on the streets, in vehicles, or in other places not meant for human habitation.
 
-Source we have: [https://www.huduser.gov/portal/datasets/ahar.html](https://www.huduser.gov/portal/datasets/ahar.html); [https://hsd.multco.us/data-dashboard/](https://hsd.multco.us/data-dashboard/)
+Source we have: <https://www.huduser.gov/portal/datasets/ahar.html>; <https://hsd.multco.us/data-dashboard/>
 
-Source we'd like: the 'By Name List of people experiencing homelessness', Multnomah County Homeless Services Dept. 
+Source we'd like: the 'By Name List of people experiencing homelessness', Multnomah County Homeless Services Dept.
 
 Date range available: 2007-2023 (yearly), 2024-2025 (monthly)
 
@@ -554,17 +553,15 @@ p <- ggplot(dat_homelessness, aes(x = date, y = n, color = category,
 ggplotly(p, tooltip = "text")
 ```
 
-
 #### Sheltered
 
 People in emergency shelters, transitional housing, or domestic violence shelters.
 
-Source: [https://www.huduser.gov/portal/datasets/ahar.html](https://www.huduser.gov/portal/datasets/ahar.html); [https://hsd.multco.us/data-dashboard/](https://hsd.multco.us/data-dashboard/)
+Source: <https://www.huduser.gov/portal/datasets/ahar.html>; <https://hsd.multco.us/data-dashboard/>
 
-Source we'd like: the 'By Name List of people experiencing homelessness', Multnomah County Homeless Services Dept. 
+Source we'd like: the 'By Name List of people experiencing homelessness', Multnomah County Homeless Services Dept.
 
 Date range available: 2007-2023 (yearly), 2024-2025 (monthly)
-
 
 ### Housing Cost Burden
 
@@ -578,7 +575,7 @@ This refers to people living with friends or family because they have no other p
 
 This is measured by the number of times a person or family moves within a specific period (e.g., two or more moves in a year). It indicates a lack of stable residence.
 
-### Eviction Rates 
+### Eviction Rates
 
 The number of formal evictions filed in the court system is a direct measure of housing loss and a strong predictor of future homelessness.
 
@@ -602,19 +599,19 @@ This score measures a range of childhood traumas. High ACE scores in a populatio
 
 These measures reflect the results or consequences of behavioral health issues and the effectiveness of the system in place.
 
-## Fatal Overdose Rate (by substance, e.g., fentanyl) 
+## Fatal Overdose Rate (by substance, e.g., fentanyl)
 
 This is a critical and highly-impactful measure for Multnomah County, where fentanyl-related deaths have seen a dramatic increase. It directly reflects the severity of the opioid crisis.
 
-## Suicide Rates (by age group, gender, and race) 
+## Suicide Rates (by age group, gender, and race)
 
 Suicide is a tragic and direct outcome of severe behavioral health distress. Analyzing the data by specific demographics can help identify the most vulnerable populations.
 
-## Emergency Department Visits for Behavioral Health Crises 
+## Emergency Department Visits for Behavioral Health Crises
 
 This measure indicates the number of people in acute distress who are not being served by the regular, community-based mental health system. A high rate suggests a fragmented or insufficient system of care.
 
-## Mental Health-Related Civil Commitment Rates 
+## Mental Health-Related Civil Commitment Rates
 
 This measures the number of individuals involuntarily placed in a treatment facility due to a mental health crisis. It can highlight gaps in preventative and community-based care.
 
@@ -622,7 +619,7 @@ This measures the number of individuals involuntarily placed in a treatment faci
 
 The number of arrests and incarcerations for individuals with mental health disorders indicates a failure to provide effective, community-based support.
 
-## Substance Use Disorder Treatment Admission and Completion Rates 
+## Substance Use Disorder Treatment Admission and Completion Rates
 
 This is a key measure of the system's effectiveness. High admission rates show a need for services, while low completion rates can point to barriers in treatment.
 
@@ -642,51 +639,12 @@ Surveying individuals who use the system can provide valuable qualitative and qu
 
 This measure tracks how long people stay engaged in treatment. High retention rates suggest that programs are effective and that clients feel supported.
 
-## Integration of Behavioral and Physical Health Care  
+## Integration of Behavioral and Physical Health Care
 
 This measures the extent to which mental health, substance use, and physical health services are coordinated. A high level of integration leads to better overall health outcomes. It can be measured by looking at metrics like the number of individuals with co-occurring mental and physical health conditions who are seen by integrated care teams.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ```{r}
 #| label: end
 
 
 ```
-
