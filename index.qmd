@@ -412,23 +412,21 @@ ggplot(dat_homelessness, aes(x = date, y = n)) +
 #| warning: false
 
 ## Data visualization - Interactive Plotly Chart
-library(plotly)
-
-# Create the ggplot object
-p <- ggplot(dat_homelessness, aes(x = date, y = n, color = category, 
-                                           text = paste("Date:", date, "<br>Count:", n))) +
+p <- ggplot(dat_homelessness, aes(x = date, y = n)) +
   
   # Add the 'Sheltered' line and points with 50% alpha
   geom_line(data = filter(dat_homelessness, category == "Sheltered"), 
             linewidth = 1, color = "#72CCD4", alpha = 0.5) +
   geom_point(data = filter(dat_homelessness, category == "Sheltered"), 
-             size = 1, color = "#72CCD4", alpha = 0.5) +
+             size = 1, color = "#72CCD4", alpha = 0.5,
+             aes(text = paste("Date:", date, "<br>Count:", n))) +
   
   # Add the 'Unsheltered' line and points
   geom_line(data = filter(dat_homelessness, category == "Unsheltered"), 
             linewidth = 1, color = "#8C183E") +
   geom_point(data = filter(dat_homelessness, category == "Unsheltered"), 
-             size = 1, color = "#8C183E") +
+             size = 1, color = "#8C183E",
+             aes(text = paste("Date:", date, "<br>Count:", n))) +
   
   # Add the vertical dashed line for COVID-19
   geom_vline(
@@ -453,10 +451,29 @@ p <- ggplot(dat_homelessness, aes(x = date, y = n, color = category,
        x = "Date",
        y = "Number of Individuals") +
   theme_minimal() +
+  scale_x_date(breaks = "3 years", date_labels = "%Y") +
   theme(legend.position = "none")
 
-# Convert the ggplot object to a plotly object for interactivity
-ggplotly(p, tooltip = "text")
+# Convert the ggplot object to a plotly object with the correct tooltip
+p_plotly <- ggplotly(p, tooltip = "text")
+
+# Add the static text labels as annotations
+p_plotly <- p_plotly %>%
+  add_annotations(
+    x = as.Date("2011-01-01"), y = 1900,
+    text = "Unsheltered",
+    showarrow = FALSE,
+    font = list(color = "#8C183E")
+  ) %>%
+  add_annotations(
+    x = as.Date("2011-01-01"), y = 2900,
+    text = "Sheltered",
+    showarrow = FALSE,
+    font = list(color = "#72CCD4")
+  )
+
+# Display the final plot
+p_plotly
 ```
 
 #### Sheltered
