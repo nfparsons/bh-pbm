@@ -412,21 +412,18 @@ ggplot(dat_homelessness, aes(x = date, y = n)) +
 #| warning: false
 
 ## Data visualization - Interactive Plotly Chart
+# Create the ggplot object
 p <- ggplot(dat_homelessness, aes(x = date, y = n)) +
   
-  # Add the 'Sheltered' line and points with 50% alpha
-  geom_line(data = filter(dat_homelessness, category == "Sheltered"), 
-            linewidth = 1, color = "#72CCD4", alpha = 0.5) +
-  geom_point(data = filter(dat_homelessness, category == "Sheltered"), 
-             size = 1, color = "#72CCD4", alpha = 0.5,
-             aes(text = paste("Date:", date, "<br>Count:", n))) +
+  # Map color to the capitalized category for the tooltip
+  geom_line(aes(color = category), 
+                linewidth = 1) +
   
-  # Add the 'Unsheltered' line and points
-  geom_line(data = filter(dat_homelessness, category == "Unsheltered"), 
-            linewidth = 1, color = "#8C183E") +
-  geom_point(data = filter(dat_homelessness, category == "Unsheltered"), 
-             size = 1, color = "#8C183E",
-             aes(text = paste("Date:", date, "<br>Count:", n))) +
+  geom_point(aes(color = category, text = paste(
+    "Date:", format(date, "%Y-%m-%d"),
+    "<br>Count:", n,
+    "<br>Category:", str_to_title(category) # This is the key change
+  )), size = 1) +
   
   # Add the vertical dashed line for COVID-19
   geom_vline(
@@ -450,30 +447,23 @@ p <- ggplot(dat_homelessness, aes(x = date, y = n)) +
   labs(title = "Trends in Homelessness Counts Over Time, \nMultnomah County",
        x = "Date",
        y = "Number of Individuals") +
+  
+  # Use manual colors to specify the correct hex codes
+  scale_color_manual(name = "", 
+                     values = c("Unsheltered" = "#8C183E", "Sheltered" = "#72CCD4")) +
+  
   theme_minimal() +
-  scale_x_date(breaks = "3 years", date_labels = "%Y") +
-  theme(legend.position = "none")
+  scale_x_date(breaks = "3 years", date_labels = "%Y")
 
-# Convert the ggplot object to a plotly object with the correct tooltip
-p_plotly <- ggplotly(p, tooltip = "text")
-
-# Add the static text labels as annotations
-p_plotly <- p_plotly %>%
-  add_annotations(
-    x = as.Date("2011-01-01"), y = 1900,
-    text = "Unsheltered",
-    showarrow = FALSE,
-    font = list(color = "#8C183E")
-  ) %>%
-  add_annotations(
-    x = as.Date("2011-01-01"), y = 2900,
-    text = "Sheltered",
-    showarrow = FALSE,
-    font = list(color = "#72CCD4")
-  )
-
-# Display the final plot
-p_plotly
+# Convert the ggplot object to plotly and position the legend
+ggplotly(p) %>%
+  plotly::layout(legend = list(
+    x = 0.3,
+    y = -0.25, # Adjust this value to control vertical position
+    xanchor = 'left',
+    yanchor = 'bottom',
+    orientation = 'h'
+  ))
 ```
 
 #### Sheltered
