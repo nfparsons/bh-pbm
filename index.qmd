@@ -36,8 +36,9 @@ p_load(
   archive,       # Archive files
   filesstrings,  # String manipulation
   googledrive,   # Interact with Google Drive
+  rsconnect,     # RStudio Connect
   reprex,        # Reproducible examples
-  knitr        # Dynamic report generation
+  knitr          # Dynamic report generation
 )
 
 # Data Manipulation and Transformation (Tidyverse first, then others)
@@ -57,50 +58,6 @@ p_load(
   flextable      # MS Office compatible tables
 )
 
-# Survey Analysis
-p_load(
-  survey,        # Survey analysis
-  srvyr,         # Survey analysis
-  anesrake       # ANES Raking
-)
-
-# Spatial Analysis (sf preferred, then others)
-p_load(
-  sf,            # Simple features (primary spatial package)
-  sfd,           # Space-Filling Design Library
-  sftime,        # Simple Features Time Series
-  spdep,         # Spatial dependence
-  raster,        # Raster data handling
-  CARBayes,      # Bayesian spatial modeling
-  tidycensus,    # US Census data
-  tidygeocoder,  # Geocoding
-  geojsonio,     # GeoJSON/TopoJSON conversion
-  geogrid,       # Geospatial data
-  ggspatial,     # Spatial visualization
-  tmap,          # Thematic maps
-  tmaptools,     # Thematic map tools
-  osmdata,       # OpenStreetMap data
-  OpenStreetMap, # OpenStreetMap data
-  ggmap,         # Spatial visualization (Consider if needed with tmap)
-  maptiles,      # Map tiles
-  tidyterra,     # OpenStreetMap data
-  tigris,        # US Census TIGER/Line shapefiles
-  maps          # Draw geographical maps (Consider if needed with sf/tmap)
-)
-
-# Time Series
-p_load(
-  xts,           # Extensible time series
-  spacetime,     # Spatio-temporal data
-  tsibble,       # Tidy temporal data frames
-  slider,        # Sliding window functions
-  imputeTS,      # Time series imputation
-  feasts,        # Time series feature extraction
-  forecast,      # Time series forecasting
-  trending,      # Trending analysis
-  tibbletime     # Time-aware tibbles
-)
-
 # Visualization (ggplot2 related first)
 p_load(
   scales,        # Graphical scales (often used with ggplot2)
@@ -108,6 +65,7 @@ p_load(
   extrafont,     # Font management
   showtext,      # Easy font use in plots
   patchwork,     # Plot composition
+  plotly,        # Interactive plots
   ggpp,          # ggplot2 extensions
   ggExtra,       # ggplot2 enhancements
   ggalt,         # Extra ggplot2 geoms/stats
@@ -167,46 +125,9 @@ conflicts_prefer(
 # 4. Global Parameters/Constants
 # -----------------------------------------------------------------------------
 
-# API Keys (Store securely, ideally in environment variables)
-elsevier_api_key <- Sys.getenv("ELSEVIER_API_KEY")  # Get from environment
-census_api_key <- Sys.getenv("CENSUS_API_KEY") # Get from environment
-google_api_key <- Sys.getenv("GOOGLE_API_KEY") # Get from environment
-googlegeocode_api_key <- Sys.getenv("GOOGLEGEOCODE_API_KEY") # Get from environment
-
-# Check if API keys are set (important for security)
-if (elsevier_api_key == "") {
-  stop("Elsevier API key not found. Set the ELSEVIER_API_KEY environment variable.")
-}
-if (census_api_key == "") {
-  stop("Census API key not found. Set the CENSUS_API_KEY environment variable.")
-}
-if (google_api_key == "") {
-  stop("Google API key not found. Set the GOOGLE_API_KEY environment variable.")
-}
-if (googlegeocode_api_key == "") {
-  stop("Google GeoCode API key not found. Set the GOOGLEGEOCODE_API_KEY environment variable.")
-}
-
-# GIS repo (set for your own use)
-gis_repo <- Sys.getenv("GIS_SHAPEFILE_REPO")
-
-# Check if GIS repo is set
-if (gis_repo == "") {
-  stop("GIS shapefile repository not found. Set the GIS_SHAPEFILE_REPO environment variable using the following code: `gis_repo <- 'path/to/shapefiles/folder', or add the following code to your .Rprofile using `file.edit(file.path('~', '.Rprofile'))`: `Sys.setenv(DATA_REPO = 'path/to/shapefiles/folder')`")
-}
-
-# Data repo (set for your own use)
-data_repo <- Sys.getenv("DATA_REPO")
-
-# Check if GIS repo is set
-if (data_repo == "") {
-  stop("Data repository not found. Set the DATA_REPO environment variable using the following code: `data_repo <- 'path/to/data/folder'`, or add the following code to your .Rprofile using `file.edit(file.path('~', '.Rprofile'))`: `Sys.setenv(DATA_REPO = 'path/to/data/folder')`")
-}
-
-# Other Global Settings
+# Global Settings
 set.seed(13) # Random seed for reproducibility
 options(scipen = 9999) # Large number for scientific notation preference
-sf_use_s2(FALSE) # Use sf package for spatial operations
 
 # -----------------------------------------------------------------------------
 # 5. Themes and Table Defaults
@@ -242,21 +163,6 @@ perma_list <- c("data_repo", "gis_repo", "mchd_claret", "mchd_copper_rose", "mch
 
 # Enable showtext for custom fonts
 showtext::showtext_auto() 
-
-# -----------------------------------------------------------------------------
-# 7. API Key Registration
-# -----------------------------------------------------------------------------
-
-# Register API keys (after setting them as environment variables)
-
-# tidycensus
-tidycensus::census_api_key(census_api_key, overwrite = TRUE) 
-
-# Elsevier 
-rscopus::set_api_key(elsevier_api_key)  
-
-# Google Maps 
-ggmap::register_google(key = google_api_key) 
 
 # -----------------------------------------------------------------------------
 # 8.  Session Information
@@ -403,6 +309,7 @@ dat_homelessness <- dat_homelessness %>%
 ```
 
 ```{r}
+#| eval: false
 #| echo: false
 #| error: false
 #| message: false
