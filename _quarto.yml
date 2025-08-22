@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "bh_pbm"
+  title: "Behavioral Health Population-based Measures"
   navbar:
     left:
       - href: index.qmd
@@ -17,5 +17,5 @@ format:
     css: styles.css
     toc: true
 
-editor: visual
+editor: source
 
