@@ -1,1 +1,25 @@
 /* css styles */
+
+:root {
+  /* Primary Colors */
+  --mchd-logo-blue: #326195;
+  --mchd-green: #385D2F;
+  --mchd-logo-green: #48773C;
+  /* Secondary Colors */
+  --mchd-claret: #8C183E;
+  --mchd-copper-rose: #966167;
+  --mchd-deep-saffron: #F79232;
+  --mchd-light-cerulean: #72CCD4;
+}
+
+/* Linking to a service like Google Fonts (Montserrat is available there) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* You would need to host or link to Myriad Pro since it's not a standard web font */
+
+/* Apply the fonts to your website elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  font-family: 'Myriad Pro', sans-serif;
+}

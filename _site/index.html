@@ -72,8 +72,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
 <script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
-<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
@@ -133,18 +133,38 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#eviction-rates" id="toc-eviction-rates" class="nav-link" data-scroll-target="#eviction-rates">Eviction Rates</a></li>
   </ul></li>
   <li><a href="#unemployment-rate" id="toc-unemployment-rate" class="nav-link" data-scroll-target="#unemployment-rate">Unemployment Rate</a></li>
-  <li><a href="#access-to-healthcare-mental-health-and-substance-use-treatment" id="toc-access-to-healthcare-mental-health-and-substance-use-treatment" class="nav-link" data-scroll-target="#access-to-healthcare-mental-health-and-substance-use-treatment">Access to Healthcare (Mental Health and Substance Use Treatment)</a></li>
-  <li><a href="#community-social-cohesion-and-support-networks" id="toc-community-social-cohesion-and-support-networks" class="nav-link" data-scroll-target="#community-social-cohesion-and-support-networks">Community Social Cohesion and Support Networks</a></li>
+  <li><a href="#access-to-healthcare-mental-health-and-substance-use-treatment" id="toc-access-to-healthcare-mental-health-and-substance-use-treatment" class="nav-link" data-scroll-target="#access-to-healthcare-mental-health-and-substance-use-treatment">Access to Healthcare (Mental Health and Substance Use Treatment)</a>
+  <ul class="collapse">
+  <li><a href="#part-1-how-to-get-the-data-from-hrsa" id="toc-part-1-how-to-get-the-data-from-hrsa" class="nav-link" data-scroll-target="#part-1-how-to-get-the-data-from-hrsa">Part 1: How to Get the Data from HRSA</a></li>
+  <li><a href="#code-to-get-health-insurance-coverage-data" id="toc-code-to-get-health-insurance-coverage-data" class="nav-link" data-scroll-target="#code-to-get-health-insurance-coverage-data">Code to Get Health Insurance Coverage Data</a></li>
+  </ul></li>
+  <li><a href="#community-social-cohesion-and-support-networks" id="toc-community-social-cohesion-and-support-networks" class="nav-link" data-scroll-target="#community-social-cohesion-and-support-networks">Community Social Cohesion and Support Networks</a>
+  <ul class="collapse">
+  <li><a href="#part-1-download-the-election-data" id="toc-part-1-download-the-election-data" class="nav-link" data-scroll-target="#part-1-download-the-election-data">Part 1: Download the Election Data</a></li>
+  <li><a href="#part-2-code-to-calculate-voter-turnout" id="toc-part-2-code-to-calculate-voter-turnout" class="nav-link" data-scroll-target="#part-2-code-to-calculate-voter-turnout">Part 2: Code to Calculate Voter Turnout</a></li>
+  <li><a href="#part-1-download-the-response-rate-data" id="toc-part-1-download-the-response-rate-data" class="nav-link" data-scroll-target="#part-1-download-the-response-rate-data">Part 1: Download the Response Rate Data</a></li>
+  <li><a href="#part-2-code-to-extract-the-response-rate" id="toc-part-2-code-to-extract-the-response-rate" class="nav-link" data-scroll-target="#part-2-code-to-extract-the-response-rate">Part 2: Code to Extract the Response Rate</a></li>
+  <li><a href="#part-1-how-to-get-the-non-profit-data" id="toc-part-1-how-to-get-the-non-profit-data" class="nav-link" data-scroll-target="#part-1-how-to-get-the-non-profit-data">Part 1: How to Get the Non-profit Data</a></li>
+  <li><a href="#part-2-code-to-calculate-non-profit-density" id="toc-part-2-code-to-calculate-non-profit-density" class="nav-link" data-scroll-target="#part-2-code-to-calculate-non-profit-density">Part 2: Code to Calculate Non-profit Density</a></li>
+  <li><a href="#explanation-of-the-pca" id="toc-explanation-of-the-pca" class="nav-link" data-scroll-target="#explanation-of-the-pca">Explanation of the PCA</a></li>
+  </ul></li>
   <li><a href="#adverse-childhood-experiences-aces-score" id="toc-adverse-childhood-experiences-aces-score" class="nav-link" data-scroll-target="#adverse-childhood-experiences-aces-score">Adverse Childhood Experiences (ACEs) Score</a></li>
   </ul></li>
   <li><a href="#outcome-based-behavorial-health-measures" id="toc-outcome-based-behavorial-health-measures" class="nav-link" data-scroll-target="#outcome-based-behavorial-health-measures">Outcome-based Behavorial Health Measures</a>
   <ul class="collapse">
   <li><a href="#fatal-overdose-rate-by-substance-e.g.-fentanyl" id="toc-fatal-overdose-rate-by-substance-e.g.-fentanyl" class="nav-link" data-scroll-target="#fatal-overdose-rate-by-substance-e.g.-fentanyl">Fatal Overdose Rate (by substance, e.g., fentanyl)</a></li>
   <li><a href="#suicide-rates-by-age-group-gender-and-race" id="toc-suicide-rates-by-age-group-gender-and-race" class="nav-link" data-scroll-target="#suicide-rates-by-age-group-gender-and-race">Suicide Rates (by age group, gender, and race)</a></li>
-  <li><a href="#emergency-department-visits-for-behavioral-health-crises" id="toc-emergency-department-visits-for-behavioral-health-crises" class="nav-link" data-scroll-target="#emergency-department-visits-for-behavioral-health-crises">Emergency Department Visits for Behavioral Health Crises</a></li>
+  <li><a href="#emergency-department-visits-for-behavioral-health-crises" id="toc-emergency-department-visits-for-behavioral-health-crises" class="nav-link" data-scroll-target="#emergency-department-visits-for-behavioral-health-crises">Emergency Department Visits for Behavioral Health Crises</a>
+  <ul class="collapse">
+  <li><a href="#part-1-guidance-for-querying-essence" id="toc-part-1-guidance-for-querying-essence" class="nav-link" data-scroll-target="#part-1-guidance-for-querying-essence">Part 1: Guidance for Querying ESSENCE</a></li>
+  <li><a href="#part-2-r-code-for-analyzing-the-exported-data" id="toc-part-2-r-code-for-analyzing-the-exported-data" class="nav-link" data-scroll-target="#part-2-r-code-for-analyzing-the-exported-data">Part 2: R Code for Analyzing the Exported Data</a></li>
+  </ul></li>
   <li><a href="#mental-health-related-civil-commitment-rates" id="toc-mental-health-related-civil-commitment-rates" class="nav-link" data-scroll-target="#mental-health-related-civil-commitment-rates">Mental Health-Related Civil Commitment Rates</a></li>
   <li><a href="#criminal-justice-system-involvement-mental-health-related-arrests" id="toc-criminal-justice-system-involvement-mental-health-related-arrests" class="nav-link" data-scroll-target="#criminal-justice-system-involvement-mental-health-related-arrests">Criminal Justice System Involvement (mental health-related arrests)</a></li>
-  <li><a href="#substance-use-disorder-treatment-admission-and-completion-rates" id="toc-substance-use-disorder-treatment-admission-and-completion-rates" class="nav-link" data-scroll-target="#substance-use-disorder-treatment-admission-and-completion-rates">Substance Use Disorder Treatment Admission and Completion Rates</a></li>
+  <li><a href="#substance-use-disorder-treatment-admission-and-completion-rates" id="toc-substance-use-disorder-treatment-admission-and-completion-rates" class="nav-link" data-scroll-target="#substance-use-disorder-treatment-admission-and-completion-rates">Substance Use Disorder Treatment Admission and Completion Rates</a>
+  <ul class="collapse">
+  <li><a href="#how-to-find-the-data" id="toc-how-to-find-the-data" class="nav-link" data-scroll-target="#how-to-find-the-data">How to Find the Data</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#process-and-systems-based-measures" id="toc-process-and-systems-based-measures" class="nav-link" data-scroll-target="#process-and-systems-based-measures">Process and Systems-based Measures</a>
   <ul class="collapse">
@@ -154,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#integration-of-behavioral-and-physical-health-care" id="toc-integration-of-behavioral-and-physical-health-care" class="nav-link" data-scroll-target="#integration-of-behavioral-and-physical-health-care">Integration of Behavioral and Physical Health Care</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -188,68 +208,229 @@ ul.task-list li input[type="checkbox"] {
 <section id="homelessness-unsheltered-and-sheltered" class="level3">
 <h3 class="anchored" data-anchor-id="homelessness-unsheltered-and-sheltered">Homelessness (Unsheltered and Sheltered)</h3>
 <p>This is the most visible form of unstable housing.</p>
-<section id="unsheltered" class="level4">
-<h4 class="anchored" data-anchor-id="unsheltered">Unsheltered</h4>
-<p>People living on the streets, in vehicles, or in other places not meant for human habitation.</p>
-<p>Source we have: <a href="https://www.huduser.gov/portal/datasets/ahar.html" class="uri">https://www.huduser.gov/portal/datasets/ahar.html</a>; <a href="https://hsd.multco.us/data-dashboard/" class="uri">https://hsd.multco.us/data-dashboard/</a></p>
-<p>Source we’d like: the ‘By Name List of people experiencing homelessness’, Multnomah County Homeless Services Dept.</p>
-<p>Date range available: 2007-2023 (yearly), 2024-2025 (monthly)</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<ul>
+<li><p><strong>Definitions</strong>:</p>
+<ul>
+<li><p><strong>Unsheltered</strong>: People living on the streets, in vehicles, or in other places not meant for human habitation.</p></li>
+<li><p><strong>Sheltered</strong>: People in emergency shelters, transitional housing, or domestic violence shelters.</p></li>
+</ul></li>
+<li><p><strong>Primary Source</strong>: <strong><a href="https://hsd.multco.us/data-dashboard/">Multnomah County Homeless Services Department</a></strong>. Shows monthly counts of how many people are experiencing homelessness in Multnomah County, broken down by sheltered vs.&nbsp;unsheltered. Date range available: January 2024 to present (monthly).</p></li>
+<li><p><strong>Secondary Source</strong>: <strong><a href="https://www.huduser.gov/portal/datasets/ahar.html">U.S. Department of Housing and Urban Development (HUD)</a></strong>. They publish the Annual Homeless Assessment Report (AHAR) to Congress, which includes point-in-time counts of homelessness. Date range available: 2007-2024 (yearly).</p></li>
+<li><p><strong>Potential Source</strong>: The ideal source would be the actual ‘By Name List of people experiencing homelessness’ maintained by the Multnomah County Homeless Services Department. This would provide the most accurate and up-to-date counts, including demographic breakdowns.</p></li>
+<li><p><strong>How to Access</strong>: This data is saved in <code>data/homelessness_counts_multnomah_2007-present.csv</code> in this project repository. This file needs to be updated by hand.</p></li>
+</ul>
 <div class="cell">
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-d702bf6449cc05af9583" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-d702bf6449cc05af9583">{"x":{"data":[{"x":[13514,13879,14245,14610,14975,15340,15706,16071,16436,16801,17167,17532,17897,18262,18628,18993,19358,19723,19754,19783,19814,19844,19875,19905,19936,19967,19997,20028,20058,20089,20120,20148,20179,20209,20240],"y":[2284,2284,2494,2644,2783,2709,2546,2032,1914,2027,2509,2351,1978,2136,1780,2171,2353,4041,4123,4116,4069,4149,4161,4158,4235,4367,4617,4764,4775,4849,4860,4814,4814,4893,4818],"text":"","type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(114,204,212,1)","dash":"solid"},"hoveron":"points","name":"Sheltered","legendgroup":"Sheltered","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"none","frame":null},{"x":[13514,13879,14245,14610,14975,15340,15706,16071,16436,16801,17167,17532,17897,18262,18628,18993,19358,19723,19754,19783,19814,19844,19875,19905,19936,19967,19997,20028,20058,20089,20120,20148,20179,20209,20240],"y":[1634,1634,1591,1591,1714,1714,1895,1895,1887,1887,1668,1668,2037,2037,null,3057,3944,4969,5371,5623,5773,5619,5708,5874,5989,5844,5827,5906,5975,6275,6796,7159,7414,7318,7541],"text":"","type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(140,24,62,1)","dash":"solid"},"hoveron":"points","name":"Unsheltered","legendgroup":"Unsheltered","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"none","frame":null},{"x":[13514,13879,14245,14610,14975,15340,15706,16071,16436,16801,17167,17532,17897,18262,18628,18993,19358,19723,19754,19783,19814,19844,19875,19905,19936,19967,19997,20028,20058,20089,20120,20148,20179,20209,20240],"y":[2284,2284,2494,2644,2783,2709,2546,2032,1914,2027,2509,2351,1978,2136,1780,2171,2353,4041,4123,4116,4069,4149,4161,4158,4235,4367,4617,4764,4775,4849,4860,4814,4814,4893,4818],"text":["Date: 2007-01-01 <br>Count: 2284 <br>Category: Sheltered","Date: 2008-01-01 <br>Count: 2284 <br>Category: Sheltered","Date: 2009-01-01 <br>Count: 2494 <br>Category: Sheltered","Date: 2010-01-01 <br>Count: 2644 <br>Category: Sheltered","Date: 2011-01-01 <br>Count: 2783 <br>Category: Sheltered","Date: 2012-01-01 <br>Count: 2709 <br>Category: Sheltered","Date: 2013-01-01 <br>Count: 2546 <br>Category: Sheltered","Date: 2014-01-01 <br>Count: 2032 <br>Category: Sheltered","Date: 2015-01-01 <br>Count: 1914 <br>Category: Sheltered","Date: 2016-01-01 <br>Count: 2027 <br>Category: Sheltered","Date: 2017-01-01 <br>Count: 2509 <br>Category: Sheltered","Date: 2018-01-01 <br>Count: 2351 <br>Category: Sheltered","Date: 2019-01-01 <br>Count: 1978 <br>Category: Sheltered","Date: 2020-01-01 <br>Count: 2136 <br>Category: Sheltered","Date: 2021-01-01 <br>Count: 1780 <br>Category: Sheltered","Date: 2022-01-01 <br>Count: 2171 <br>Category: Sheltered","Date: 2023-01-01 <br>Count: 2353 <br>Category: Sheltered","Date: 2024-01-01 <br>Count: 4041 <br>Category: Sheltered","Date: 2024-02-01 <br>Count: 4123 <br>Category: Sheltered","Date: 2024-03-01 <br>Count: 4116 <br>Category: Sheltered","Date: 2024-04-01 <br>Count: 4069 <br>Category: Sheltered","Date: 2024-05-01 <br>Count: 4149 <br>Category: Sheltered","Date: 2024-06-01 <br>Count: 4161 <br>Category: Sheltered","Date: 2024-07-01 <br>Count: 4158 <br>Category: Sheltered","Date: 2024-08-01 <br>Count: 4235 <br>Category: Sheltered","Date: 2024-09-01 <br>Count: 4367 <br>Category: Sheltered","Date: 2024-10-01 <br>Count: 4617 <br>Category: Sheltered","Date: 2024-11-01 <br>Count: 4764 <br>Category: Sheltered","Date: 2024-12-01 <br>Count: 4775 <br>Category: Sheltered","Date: 2025-01-01 <br>Count: 4849 <br>Category: Sheltered","Date: 2025-02-01 <br>Count: 4860 <br>Category: Sheltered","Date: 2025-03-01 <br>Count: 4814 <br>Category: Sheltered","Date: 2025-04-01 <br>Count: 4814 <br>Category: Sheltered","Date: 2025-05-01 <br>Count: 4893 <br>Category: Sheltered","Date: 2025-06-01 <br>Count: 4818 <br>Category: Sheltered"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(114,204,212,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(114,204,212,1)"}},"hoveron":"points","name":"Sheltered","legendgroup":"Sheltered","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[13514,13879,14245,14610,14975,15340,15706,16071,16436,16801,17167,17532,17897,18262,18628,18993,19358,19723,19754,19783,19814,19844,19875,19905,19936,19967,19997,20028,20058,20089,20120,20148,20179,20209,20240],"y":[1634,1634,1591,1591,1714,1714,1895,1895,1887,1887,1668,1668,2037,2037,null,3057,3944,4969,5371,5623,5773,5619,5708,5874,5989,5844,5827,5906,5975,6275,6796,7159,7414,7318,7541],"text":["Date: 2007-01-01 <br>Count: 1634 <br>Category: Unsheltered","Date: 2008-01-01 <br>Count: 1634 <br>Category: Unsheltered","Date: 2009-01-01 <br>Count: 1591 <br>Category: Unsheltered","Date: 2010-01-01 <br>Count: 1591 <br>Category: Unsheltered","Date: 2011-01-01 <br>Count: 1714 <br>Category: Unsheltered","Date: 2012-01-01 <br>Count: 1714 <br>Category: Unsheltered","Date: 2013-01-01 <br>Count: 1895 <br>Category: Unsheltered","Date: 2014-01-01 <br>Count: 1895 <br>Category: Unsheltered","Date: 2015-01-01 <br>Count: 1887 <br>Category: Unsheltered","Date: 2016-01-01 <br>Count: 1887 <br>Category: Unsheltered","Date: 2017-01-01 <br>Count: 1668 <br>Category: Unsheltered","Date: 2018-01-01 <br>Count: 1668 <br>Category: Unsheltered","Date: 2019-01-01 <br>Count: 2037 <br>Category: Unsheltered","Date: 2020-01-01 <br>Count: 2037 <br>Category: Unsheltered","Date: 2021-01-01 <br>Count: NA <br>Category: Unsheltered","Date: 2022-01-01 <br>Count: 3057 <br>Category: Unsheltered","Date: 2023-01-01 <br>Count: 3944 <br>Category: Unsheltered","Date: 2024-01-01 <br>Count: 4969 <br>Category: Unsheltered","Date: 2024-02-01 <br>Count: 5371 <br>Category: Unsheltered","Date: 2024-03-01 <br>Count: 5623 <br>Category: Unsheltered","Date: 2024-04-01 <br>Count: 5773 <br>Category: Unsheltered","Date: 2024-05-01 <br>Count: 5619 <br>Category: Unsheltered","Date: 2024-06-01 <br>Count: 5708 <br>Category: Unsheltered","Date: 2024-07-01 <br>Count: 5874 <br>Category: Unsheltered","Date: 2024-08-01 <br>Count: 5989 <br>Category: Unsheltered","Date: 2024-09-01 <br>Count: 5844 <br>Category: Unsheltered","Date: 2024-10-01 <br>Count: 5827 <br>Category: Unsheltered","Date: 2024-11-01 <br>Count: 5906 <br>Category: Unsheltered","Date: 2024-12-01 <br>Count: 5975 <br>Category: Unsheltered","Date: 2025-01-01 <br>Count: 6275 <br>Category: Unsheltered","Date: 2025-02-01 <br>Count: 6796 <br>Category: Unsheltered","Date: 2025-03-01 <br>Count: 7159 <br>Category: Unsheltered","Date: 2025-04-01 <br>Count: 7414 <br>Category: Unsheltered","Date: 2025-05-01 <br>Count: 7318 <br>Category: Unsheltered","Date: 2025-06-01 <br>Count: 7541 <br>Category: Unsheltered"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(140,24,62,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(140,24,62,1)"}},"hoveron":"points","name":"Unsheltered","legendgroup":"Unsheltered","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993,null,18262,18993],"y":[2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057,null,2037,3057],"text":"","type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(140,24,62,0.5)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":48.949771689497723},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Trends in Homelessness Counts Over Time, <br />Multnomah County","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[13177.700000000001,20576.299999999999],"tickmode":"array","ticktext":["2009","2012","2015","2018","2021","2024"],"tickvals":[14245,15340,16436,17532,18628,19723],"categoryorder":"array","categoryarray":["2009","2012","2015","2018","2021","2024"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Date","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1293.5,7838.5],"tickmode":"array","ticktext":["2000","4000","6000"],"tickvals":[2000,4000,6000],"categoryorder":"array","categoryarray":["2000","4000","6000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Number of Individuals","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"x":0.29999999999999999,"y":-0.29999999999999999,"xanchor":"left","yanchor":"bottom","orientation":"h"},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"75e2488e9654":{"x":{},"y":{},"colour":{},"type":"scatter"},"75e292f8a03":{"x":{},"y":{},"colour":{},"text":{}},"75e2100dcfab":{"x":{},"y":{},"xend":{},"yend":{}}},"cur_data":"75e2488e9654","visdat":{"75e2488e9654":["function (y) ","x"],"75e292f8a03":["function (y) ","x"],"75e2100dcfab":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-d702bf6449cc05af9583">{"x":{"visdat":{"3c4a2a5e07b2":["function () ","plotlyVisDat"],"3c4a34b4cd9":["function () ","data"],"3c4a44a23c3f":["function () ","data"]},"cur_data":"3c4a44a23c3f","attrs":{"3c4a34b4cd9":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"lines+markers","name":"Sheltered","line":{"color":"#72CCD4","width":3},"marker":{"color":"#72CCD4","size":4},"text":{},"hovertemplate":"%{text}<extra><\/extra>","inherit":true},"3c4a44a23c3f":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"lines+markers","name":"Unsheltered","line":{"color":"#8C183E","width":3},"marker":{"color":"#8C183E","size":4},"text":{},"hovertemplate":"%{text}<extra><\/extra>","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Trends in Homelessness Counts Over Time, Multnomah County","xaxis":{"domain":[0,1],"automargin":true,"title":"","tickformat":"%Y","dtick":"M36"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Number of Individuals"},"shapes":[{"type":"line","x0":"2020-03-01","x1":"2020-03-01","y0":0,"y1":1,"yref":"paper","line":{"color":"grey50","dash":"dash"}},{"type":"line","x0":"2020-01-01","x1":"2022-01-01","y0":2037,"y1":3057,"line":{"color":"#8C183E","dash":"dash"}}],"legend":{"x":0.29999999999999999,"y":-0.20000000000000001,"xanchor":"left","yanchor":"bottom","orientation":"h"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2007-01-01","2008-01-01","2009-01-01","2010-01-01","2011-01-01","2012-01-01","2013-01-01","2014-01-01","2015-01-01","2016-01-01","2017-01-01","2018-01-01","2019-01-01","2020-01-01","2021-01-01","2022-01-01","2023-01-01","2024-01-01","2024-02-01","2024-03-01","2024-04-01","2024-05-01","2024-06-01","2024-07-01","2024-08-01","2024-09-01","2024-10-01","2024-11-01","2024-12-01","2025-01-01","2025-02-01","2025-03-01","2025-04-01","2025-05-01","2025-06-01"],"y":[2284,2284,2494,2644,2783,2709,2546,2032,1914,2027,2509,2351,1978,2136,1780,2171,2353,4041,4123,4116,4069,4149,4161,4158,4235,4367,4617,4764,4775,4849,4860,4814,4814,4893,4818],"type":"scatter","mode":"lines+markers","name":"Sheltered","line":{"color":"#72CCD4","width":3},"marker":{"color":"#72CCD4","size":4,"line":{"color":"rgba(31,119,180,1)"}},"text":["Date: 01-01-2007 <br>Count: 2284 <br>Category: Sheltered","Date: 01-01-2008 <br>Count: 2284 <br>Category: Sheltered","Date: 01-01-2009 <br>Count: 2494 <br>Category: Sheltered","Date: 01-01-2010 <br>Count: 2644 <br>Category: Sheltered","Date: 01-01-2011 <br>Count: 2783 <br>Category: Sheltered","Date: 01-01-2012 <br>Count: 2709 <br>Category: Sheltered","Date: 01-01-2013 <br>Count: 2546 <br>Category: Sheltered","Date: 01-01-2014 <br>Count: 2032 <br>Category: Sheltered","Date: 01-01-2015 <br>Count: 1914 <br>Category: Sheltered","Date: 01-01-2016 <br>Count: 2027 <br>Category: Sheltered","Date: 01-01-2017 <br>Count: 2509 <br>Category: Sheltered","Date: 01-01-2018 <br>Count: 2351 <br>Category: Sheltered","Date: 01-01-2019 <br>Count: 1978 <br>Category: Sheltered","Date: 01-01-2020 <br>Count: 2136 <br>Category: Sheltered","Date: 01-01-2021 <br>Count: 1780 <br>Category: Sheltered","Date: 01-01-2022 <br>Count: 2171 <br>Category: Sheltered","Date: 01-01-2023 <br>Count: 2353 <br>Category: Sheltered","Date: 01-01-2024 <br>Count: 4041 <br>Category: Sheltered","Date: 02-01-2024 <br>Count: 4123 <br>Category: Sheltered","Date: 03-01-2024 <br>Count: 4116 <br>Category: Sheltered","Date: 04-01-2024 <br>Count: 4069 <br>Category: Sheltered","Date: 05-01-2024 <br>Count: 4149 <br>Category: Sheltered","Date: 06-01-2024 <br>Count: 4161 <br>Category: Sheltered","Date: 07-01-2024 <br>Count: 4158 <br>Category: Sheltered","Date: 08-01-2024 <br>Count: 4235 <br>Category: Sheltered","Date: 09-01-2024 <br>Count: 4367 <br>Category: Sheltered","Date: 10-01-2024 <br>Count: 4617 <br>Category: Sheltered","Date: 11-01-2024 <br>Count: 4764 <br>Category: Sheltered","Date: 12-01-2024 <br>Count: 4775 <br>Category: Sheltered","Date: 01-01-2025 <br>Count: 4849 <br>Category: Sheltered","Date: 02-01-2025 <br>Count: 4860 <br>Category: Sheltered","Date: 03-01-2025 <br>Count: 4814 <br>Category: Sheltered","Date: 04-01-2025 <br>Count: 4814 <br>Category: Sheltered","Date: 05-01-2025 <br>Count: 4893 <br>Category: Sheltered","Date: 06-01-2025 <br>Count: 4818 <br>Category: Sheltered"],"hovertemplate":["%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>"],"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2007-01-01","2008-01-01","2009-01-01","2010-01-01","2011-01-01","2012-01-01","2013-01-01","2014-01-01","2015-01-01","2016-01-01","2017-01-01","2018-01-01","2019-01-01","2020-01-01",null,"2022-01-01","2023-01-01","2024-01-01","2024-02-01","2024-03-01","2024-04-01","2024-05-01","2024-06-01","2024-07-01","2024-08-01","2024-09-01","2024-10-01","2024-11-01","2024-12-01","2025-01-01","2025-02-01","2025-03-01","2025-04-01","2025-05-01","2025-06-01"],"y":[1634,1634,1591,1591,1714,1714,1895,1895,1887,1887,1668,1668,2037,2037,null,3057,3944,4969,5371,5623,5773,5619,5708,5874,5989,5844,5827,5906,5975,6275,6796,7159,7414,7318,7541],"type":"scatter","mode":"lines+markers","name":"Unsheltered","line":{"color":"#8C183E","width":3},"marker":{"color":"#8C183E","size":4,"line":{"color":"rgba(255,127,14,1)"}},"text":["Date: 01-01-2007 <br>Count: 1634 <br>Category: Unsheltered","Date: 01-01-2008 <br>Count: 1634 <br>Category: Unsheltered","Date: 01-01-2009 <br>Count: 1591 <br>Category: Unsheltered","Date: 01-01-2010 <br>Count: 1591 <br>Category: Unsheltered","Date: 01-01-2011 <br>Count: 1714 <br>Category: Unsheltered","Date: 01-01-2012 <br>Count: 1714 <br>Category: Unsheltered","Date: 01-01-2013 <br>Count: 1895 <br>Category: Unsheltered","Date: 01-01-2014 <br>Count: 1895 <br>Category: Unsheltered","Date: 01-01-2015 <br>Count: 1887 <br>Category: Unsheltered","Date: 01-01-2016 <br>Count: 1887 <br>Category: Unsheltered","Date: 01-01-2017 <br>Count: 1668 <br>Category: Unsheltered","Date: 01-01-2018 <br>Count: 1668 <br>Category: Unsheltered","Date: 01-01-2019 <br>Count: 2037 <br>Category: Unsheltered","Date: 01-01-2020 <br>Count: 2037 <br>Category: Unsheltered",null,"Date: 01-01-2022 <br>Count: 3057 <br>Category: Unsheltered","Date: 01-01-2023 <br>Count: 3944 <br>Category: Unsheltered","Date: 01-01-2024 <br>Count: 4969 <br>Category: Unsheltered","Date: 02-01-2024 <br>Count: 5371 <br>Category: Unsheltered","Date: 03-01-2024 <br>Count: 5623 <br>Category: Unsheltered","Date: 04-01-2024 <br>Count: 5773 <br>Category: Unsheltered","Date: 05-01-2024 <br>Count: 5619 <br>Category: Unsheltered","Date: 06-01-2024 <br>Count: 5708 <br>Category: Unsheltered","Date: 07-01-2024 <br>Count: 5874 <br>Category: Unsheltered","Date: 08-01-2024 <br>Count: 5989 <br>Category: Unsheltered","Date: 09-01-2024 <br>Count: 5844 <br>Category: Unsheltered","Date: 10-01-2024 <br>Count: 5827 <br>Category: Unsheltered","Date: 11-01-2024 <br>Count: 5906 <br>Category: Unsheltered","Date: 12-01-2024 <br>Count: 5975 <br>Category: Unsheltered","Date: 01-01-2025 <br>Count: 6275 <br>Category: Unsheltered","Date: 02-01-2025 <br>Count: 6796 <br>Category: Unsheltered","Date: 03-01-2025 <br>Count: 7159 <br>Category: Unsheltered","Date: 04-01-2025 <br>Count: 7414 <br>Category: Unsheltered","Date: 05-01-2025 <br>Count: 7318 <br>Category: Unsheltered","Date: 06-01-2025 <br>Count: 7541 <br>Category: Unsheltered"],"hovertemplate":["%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>",null,"%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>","%{text}<extra><\/extra>"],"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-</section>
-<section id="sheltered" class="level4">
-<h4 class="anchored" data-anchor-id="sheltered">Sheltered</h4>
-<p>People in emergency shelters, transitional housing, or domestic violence shelters.</p>
-<p>Source: <a href="https://www.huduser.gov/portal/datasets/ahar.html" class="uri">https://www.huduser.gov/portal/datasets/ahar.html</a>; <a href="https://hsd.multco.us/data-dashboard/" class="uri">https://hsd.multco.us/data-dashboard/</a></p>
-<p>Source we’d like: the ‘By Name List of people experiencing homelessness’, Multnomah County Homeless Services Dept.</p>
-<p>Date range available: 2007-2023 (yearly), 2024-2025 (monthly)</p>
-</section>
 </section>
 <section id="housing-cost-burden" class="level3">
 <h3 class="anchored" data-anchor-id="housing-cost-burden">Housing Cost Burden</h3>
 <p>A household is considered “cost-burdened” if it spends more than 30% of its income on housing costs, including rent/mortgage and utilities. This can be further broken down into severely cost-burdened if the amount exceeds 50%. This is a huge indicator of housing insecurity.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>U.S. Census Bureau’s American Community Survey (ACS)</strong>. This is the gold standard for this type of socioeconomic data at small geographic levels.</p></li>
+<li><p><strong>How to Access</strong>: The <code>tidycensus</code> package is perfect for this. It provides a straightforward way to query the Census API and get data directly into a tidy <code>tibble</code>.</p></li>
+<li><p><strong>Key Variables</strong>: Table <code>B25070</code> (Gross Rent as a Percentage of Household Income) and <code>B25091</code> (Mortgage Status by Selected Monthly Owner Costs as a Percentage of Household Income). We would sum the categories for households paying 30% or more.</p></li>
+</ul>
 </section>
 <section id="doubled-up-households" class="level3">
 <h3 class="anchored" data-anchor-id="doubled-up-households">“Doubled-Up” Households</h3>
 <p>This refers to people living with friends or family because they have no other place to go. This is a hidden form of homelessness and a major sign of housing instability.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>U.S. Census Bureau’s American Community Survey (ACS)</strong>. This is the gold standard for this type of socioeconomic data at small geographic levels.</p></li>
+<li><p><strong>How to Access in R</strong>: The <code>tidycensus</code> package is perfect for this. It provides a straightforward way to query the Census API and get data directly into a tidy <code>tibble</code>.</p></li>
+<li><p><strong>Key Variables</strong>: This is harder to measure directly, but a common proxy is to use relationship data from tables like <code>B11016</code> (Household Type by Household Size) to identify households with multiple families or non-relatives.</p></li>
+</ul>
 </section>
 <section id="residential-instability" class="level3">
 <h3 class="anchored" data-anchor-id="residential-instability">Residential Instability</h3>
 <p>This is measured by the number of times a person or family moves within a specific period (e.g., two or more moves in a year). It indicates a lack of stable residence.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>U.S. Census Bureau’s American Community Survey (ACS)</strong>. This is the gold standard for this type of socioeconomic data at small geographic levels.</p></li>
+<li><p><strong>How to Access in R</strong>: The <code>tidycensus</code> package is perfect for this. It provides a straightforward way to query the Census API and get data directly into a tidy <code>tibble</code>.</p></li>
+<li><p><strong>Key Variables</strong>: Table <code>B07003</code> (Geographical Mobility in the Past Year) is a direct measure of how many people have moved within the last year.</p></li>
+</ul>
 </section>
 <section id="eviction-rates" class="level3">
 <h3 class="anchored" data-anchor-id="eviction-rates">Eviction Rates</h3>
 <p>The number of formal evictions filed in the court system is a direct measure of housing loss and a strong predictor of future homelessness.</p>
+<ul>
+<li><p>Go to the Eviction Lab’s data download page: <a href="https://www.google.com/search?q=https://evictionlab.org/data/"><strong>https://evictionlab.org/data/</strong></a></p></li>
+<li><p>Find the download link for their <strong>county-level data</strong>. It will be a single CSV file containing data for all counties in the U.S.</p></li>
+<li><p>Download the file and save it into your R project directory. For organizational purposes, I recommend creating a subfolder named <code>data/</code> and placing the file there (e.g., <code>your-project-folder/data/counties.csv</code>).</p></li>
+</ul>
 </section>
 </section>
 <section id="unemployment-rate" class="level2">
 <h2 class="anchored" data-anchor-id="unemployment-rate">Unemployment Rate</h2>
 <p>High unemployment is directly correlated with increased rates of depression, anxiety, and substance use disorders. It’s an economic indicator with significant behavioral health consequences.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>U.S. Bureau of Labor Statistics (BLS)</strong>. They manage the Local Area Unemployment Statistics (LAUS) program.</p></li>
+<li><p><strong>How to Access in R</strong>: There are a few packages, like <code>blscrapeR</code>, or we can build a query to hit the BLS API directly. The API is free to use.</p></li>
+<li><p><strong>Key Variables</strong>: The API allows you to query for the unemployment rate (seasonally and not seasonally adjusted) for specific areas, including Multnomah County.</p></li>
+</ul>
 </section>
 <section id="access-to-healthcare-mental-health-and-substance-use-treatment" class="level2">
 <h2 class="anchored" data-anchor-id="access-to-healthcare-mental-health-and-substance-use-treatment">Access to Healthcare (Mental Health and Substance Use Treatment)</h2>
 <p>This isn’t just about the number of clinics but also about patient-to-provider ratios, geographic distribution of services, and the number of people with health insurance. Audits have shown that Multnomah County’s ability to serve those with serious mental illness is limited, making this an especially impactful measure.</p>
+<ul>
+<li><strong>Primary Source</strong>: <strong>Health Resources and Services Administration (HRSA)</strong> and the <strong>National Plan and Provider Enumeration System (NPPES)</strong>.</li>
+</ul>
+<!-- -->
+<ul>
+<li><p><strong>How to Access in R</strong>: HRSA has a data portal with downloadable datasets and some API endpoints. The NPPES NPI registry can be downloaded as a large CSV file. We could write code to download and process these files.</p></li>
+<li><p><strong>Key Variables</strong>: HRSA data includes information on Health Professional Shortage Areas (HPSAs). We can use this to calculate provider-to-population ratios for mental health professionals.</p></li>
+</ul>
+<section id="part-1-how-to-get-the-data-from-hrsa" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-how-to-get-the-data-from-hrsa">Part 1: How to Get the Data from HRSA</h3>
+<ol type="1">
+<li><p><strong>Navigate to the HRSA Data Warehouse</strong></p>
+<ul>
+<li>Go to the main portal: <a href="https://data.hrsa.gov/"><strong>https://data.hrsa.gov/</strong></a></li>
+</ul></li>
+<li><p><strong>Find the HPSA Data</strong></p>
+<ul>
+<li>Use the search bar and look for “Health Professional Shortage Areas” or “HPSA”. You should find datasets related to designated HPSAs. Look for a nationwide file that includes mental health designations.</li>
+</ul></li>
+<li><p><strong>Download the Data File</strong></p>
+<ul>
+<li><p>Find the option to download the data, usually as a <strong>CSV file</strong>.</p></li>
+<li><p>Save this file into your <code>data/</code> subfolder. For this example, let’s assume the file is named <code>mental_health_hpsa.csv</code>.</p></li>
+</ul></li>
+</ol>
+<p>Part 2: Code to Process the HPSA Data</p>
+</section>
+<section id="code-to-get-health-insurance-coverage-data" class="level3">
+<h3 class="anchored" data-anchor-id="code-to-get-health-insurance-coverage-data">Code to Get Health Insurance Coverage Data</h3>
+</section>
 </section>
 <section id="community-social-cohesion-and-support-networks" class="level2">
 <h2 class="anchored" data-anchor-id="community-social-cohesion-and-support-networks">Community Social Cohesion and Support Networks</h2>
 <p>This can be measured through surveys or community engagement data. A strong sense of community and social support can act as a protective factor against behavioral health crises.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: This is difficult to measure with administrative data. The best sources are often surveys. For a good proxy, we can use data from <strong>County Health Rankings &amp; Roadmaps</strong>.</p></li>
+<li><p><strong>How to Access in R</strong>: They provide downloadable data files. We could also check their source data (e.g., the U.S. Religion Census) to see if there are APIs available.</p></li>
+<li><p><strong>Key Variables</strong>: They have a measure called “Social Associations,” which is the number of membership associations per 10,000 people.</p></li>
+</ul>
+<p>Re-creating the Penn State Northeast Regional Center for Rural Development Social Capital Index.<br>
+</p>
+<p>1. Association Density (Establishments per 1,000 people)</p>
+<p>The original study used the Census Bureau’s <strong>County Business Patterns (CBP)</strong> dataset to count the number of establishments for specific North American Industry Classification System (NAICS) codes. We can do the same thing using the <code>tidycensus</code> package, which has a function specifically for the CBP. The latest available CBP data is for <strong>2022</strong>.</p>
+<p>Here’s the code to get the counts for all the association types, sum them up, and calculate the rate per 1,000 people.</p>
+<section id="voter-turnout" class="level4">
+<h4 class="anchored" data-anchor-id="voter-turnout">2. Voter Turnout</h4>
+<ul>
+<li><p><strong>Data Source</strong>: The <strong>MIT Election Data and Science Lab</strong>. They compile the most comprehensive county-level election results.</p></li>
+<li><p><strong>Most Recent Data</strong>: The 2020 Presidential Election.</p></li>
+<li><p><strong>Process</strong>: We’ll download their data file, load it into R, and filter for Multnomah County. We’ll then divide the total votes cast by the voting-age population for that year (which we can get from <code>tidycensus</code>).</p></li>
+</ul>
+</section>
+<section id="part-1-download-the-election-data" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-download-the-election-data">Part 1: Download the Election Data</h3>
+<ol type="1">
+<li><p><strong>Navigate to the MIT Election Lab Dataverse</strong></p>
+<ul>
+<li>Go to their data repository: <a href="https://electionlab.mit.edu/data"><strong>https://electionlab.mit.edu/data</strong></a></li>
+</ul></li>
+<li><p><strong>Find and Download the File</strong></p>
+<ul>
+<li><p>Locate the dataset for “U.S. President 1976-2020”.</p></li>
+<li><p>Download the county-level data file. It is typically named <code>1976-2020-president.csv</code>.</p></li>
+<li><p>Save this file into your <code>data/</code> subfolder.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="part-2-code-to-calculate-voter-turnout" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-code-to-calculate-voter-turnout">Part 2: Code to Calculate Voter Turnout</h3>
+<p>This R code will load the election file, calculate the total votes cast in Multnomah County in 2020, fetch the voting-age population from the 2020 Census, and compute the final turnout rate.</p>
+<section id="census-response-rate" class="level4">
+<h4 class="anchored" data-anchor-id="census-response-rate">3. Census Response Rate</h4>
+<ul>
+<li><p><strong>Data Source</strong>: The <strong>U.S. Census Bureau</strong> publishes final self-response rates for the 2020 Census.</p></li>
+<li><p><strong>Most Recent Data</strong>: 2020.</p></li>
+<li><p><strong>Process</strong>: We can download the official response rate file, load it into R, and look up the rate for Multnomah County. This is a straightforward lookup.</p></li>
+</ul>
+</section>
+</section>
+<section id="part-1-download-the-response-rate-data" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-download-the-response-rate-data">Part 1: Download the Response Rate Data</h3>
+<ol type="1">
+<li><p><strong>Navigate to the Census Bureau’s Data Page</strong></p>
+<ul>
+<li>The data is available on the “2020 Census Self-Response Rates” page. You can find the final data files here: <a href="https://www.google.com/search?q=https://www.census.gov/library/visualizations/interactive/2020-census-self-response-rates.html"><strong>https://www.census.gov/library/visualizations/interactive/2020-census-self-response-rates.html</strong></a></li>
+</ul></li>
+<li><p><strong>Find and Download the File</strong></p>
+<ul>
+<li><p>Look for the link to the <strong>final</strong> response rates, usually available as a single downloadable file containing data for all counties.</p></li>
+<li><p>Download the file and save it into your <code>data/</code> subfolder. Let’s assume you’ve named it <code>2020_census_response_rates.csv</code>.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="part-2-code-to-extract-the-response-rate" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-code-to-extract-the-response-rate">Part 2: Code to Extract the Response Rate</h3>
+<p>This R code will load the file, clean the column names, and then filter down to the exact value for Multnomah County.</p>
+<section id="non-profit-density" class="level4">
+<h4 class="anchored" data-anchor-id="non-profit-density">4. Non-profit Density</h4>
+<ul>
+<li><p><strong>Data Source</strong>: The <strong>National Center for Charitable Statistics (NCCS)</strong>, as noted in the original study. This data is based on IRS records of tax-exempt organizations.</p></li>
+<li><p><strong>Most Recent Data</strong>: Data is available for recent years (e.g., 2022 or 2023).</p></li>
+<li><p><strong>Process</strong>: This requires downloading the IRS Business Master File for exempt organizations from the NCCS website. We would then load this large file and filter it for non-international organizations located in Multnomah County, then calculate the rate per 10,000 people.</p></li>
+</ul>
+<p>This measure captures a broad range of community organizations that the previous establishment counts might miss. The authoritative source for this is the <strong>National Center for Charitable Statistics (NCCS)</strong>, which compiles data from IRS records on all registered tax-exempt organizations.</p>
+</section>
+</section>
+<section id="part-1-how-to-get-the-non-profit-data" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-how-to-get-the-non-profit-data">Part 1: How to Get the Non-profit Data</h3>
+<ol type="1">
+<li><p><strong>Navigate to the NCCS Website</strong></p>
+<ul>
+<li>Go to the NCCS data download page: <a href="https://www.google.com/search?q=https://nccs.urban.org/data-statistics/get-data"><strong>https://nccs.urban.org/data-statistics/get-data</strong></a></li>
+</ul></li>
+<li><p><strong>Create a Free Account</strong></p>
+<ul>
+<li>You will need to register for a free account to access the datasets.</li>
+</ul></li>
+<li><p><strong>Find and Download the File</strong></p>
+<ul>
+<li><p>Look for the <strong>IRS Business Master File (BMF)</strong>. This is a complete list of all active tax-exempt organizations.</p></li>
+<li><p>Download the most recently available version for the <strong>entire U.S.</strong> It will be a very large CSV file.</p></li>
+<li><p>Save this file into your <code>data/</code> subfolder. For our example, we’ll assume the file is named <code>bmf-2024.csv</code>.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="part-2-code-to-calculate-non-profit-density" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-code-to-calculate-non-profit-density">Part 2: Code to Calculate Non-profit Density</h3>
+<p>This R code will load the large BMF file, perform the necessary filtering, get the population for the same year, and calculate the final density rate. The original study excluded non-profits with an “international approach,” which we’ll do by filtering out organizations with an NTEE code starting with “Q” (International, Foreign Affairs).</p>
+<ol start="5" type="1">
+<li><p>Let’s build the final index.</p>
+<p>To do this using <strong>Principal Component Analysis (PCA)</strong>, we first need to build a basis for comparison. PCA works by finding the main patterns in a dataset with multiple entries. Therefore, to calculate a meaningful score for Multnomah County, we first need to gather the data for <strong>all 36 counties in Oregon</strong>.</p>
+<p>This process will create a “ruler” against which we can measure Multnomah County. The final code block below is comprehensive; it will:</p>
+<ol type="1">
+<li><p>Gather the four factors for every county in Oregon.</p></li>
+<li><p>Combine and clean the data.</p></li>
+<li><p>Perform the PCA to create the index.</p></li>
+<li><p>Show you where Multnomah County ranks in the state.</p></li>
+</ol></li>
+</ol>
+</section>
+<section id="explanation-of-the-pca" class="level3">
+<h3 class="anchored" data-anchor-id="explanation-of-the-pca">Explanation of the PCA</h3>
+<ol type="1">
+<li><p><strong><code>scale(pca_data)</code></strong>: This is a crucial step that <strong>standardizes</strong> the four factors. It converts each value into a Z-score, telling us how many standard deviations it is from the state-wide mean. This ensures that a factor with a large scale (like <code>turnout_rate</code> near 80) doesn’t dominate a factor with a small scale (like <code>association_rate</code> near 5).</p></li>
+<li><p><strong><code>prcomp(scaled_data)</code></strong>: This is the function that runs the PCA. It analyzes the relationships between the four factors and creates new, uncorrelated variables called “principal components.”</p></li>
+<li><p><strong><code>pca_result$x[, "PC1"]</code></strong>: We extract the first principal component (<strong>PC1</strong>). This component is the one that captures the <strong>largest possible amount of shared information</strong> across all four of our input factors. It is, in essence, the strongest underlying pattern in the data, which we are defining as our social capital index. A higher score means the county tended to score higher across all the input measures.</p></li>
+</ol>
+</section>
 </section>
 <section id="adverse-childhood-experiences-aces-score" class="level2">
 <h2 class="anchored" data-anchor-id="adverse-childhood-experiences-aces-score">Adverse Childhood Experiences (ACEs) Score</h2>
 <p>This score measures a range of childhood traumas. High ACE scores in a population are a strong predictor of poor behavioral and physical health outcomes later in life. This is a foundational, causal measure for long-term health.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>Behavioral Risk Factor Surveillance System (BRFSS)</strong> from the CDC. Many states, including Oregon, use an ACEs module in their BRFSS surveys.</p></li>
+<li><p><strong>How to Access in R</strong>: The CDC provides public-use data files. We can use the <code>survey</code> and <code>srvyr</code> packages in R to analyze this complex survey data correctly. We would look for Oregon’s specific BRFSS data to see if county-level estimates are available.</p></li>
+</ul>
 </section>
 </section>
 <section id="outcome-based-behavorial-health-measures" class="level1">
@@ -258,31 +439,112 @@ ul.task-list li input[type="checkbox"] {
 <section id="fatal-overdose-rate-by-substance-e.g.-fentanyl" class="level2">
 <h2 class="anchored" data-anchor-id="fatal-overdose-rate-by-substance-e.g.-fentanyl">Fatal Overdose Rate (by substance, e.g., fentanyl)</h2>
 <p>This is a critical and highly-impactful measure for Multnomah County, where fentanyl-related deaths have seen a dramatic increase. It directly reflects the severity of the opioid crisis.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>CDC WONDER (Wide-ranging Online Data for Epidemiologic Research)</strong>. This is a powerful tool for querying mortality data from death certificates. The <strong>Oregon Health Authority (OHA)</strong> also has public data dashboards that are often more current.</p></li>
+<li><p><strong>How to Access in R</strong>: There is not an official R package for CDC WONDER, but it’s possible to write scripts to query the web form and parse the results. For OHA, we would check their open data portal for an API or downloadable files.</p></li>
+<li><p><strong>Key Variables</strong>: We would query by cause of death (using ICD-10 codes for overdose or suicide), county, year, and demographic characteristics.</p></li>
+</ul>
 </section>
 <section id="suicide-rates-by-age-group-gender-and-race" class="level2">
 <h2 class="anchored" data-anchor-id="suicide-rates-by-age-group-gender-and-race">Suicide Rates (by age group, gender, and race)</h2>
 <p>Suicide is a tragic and direct outcome of severe behavioral health distress. Analyzing the data by specific demographics can help identify the most vulnerable populations.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>CDC WONDER (Wide-ranging Online Data for Epidemiologic Research)</strong>. This is a powerful tool for querying mortality data from death certificates. The <strong>Oregon Health Authority (OHA)</strong> also has public data dashboards that are often more current.</p></li>
+<li><p><strong>How to Access in R</strong>: There is not an official R package for CDC WONDER, but it’s possible to write scripts to query the web form and parse the results. For OHA, we would check their open data portal for an API or downloadable files.</p></li>
+<li><p><strong>Key Variables</strong>: We would query by cause of death (using ICD-10 codes for overdose or suicide), county, year, and demographic characteristics.</p></li>
+</ul>
 </section>
 <section id="emergency-department-visits-for-behavioral-health-crises" class="level2">
 <h2 class="anchored" data-anchor-id="emergency-department-visits-for-behavioral-health-crises">Emergency Department Visits for Behavioral Health Crises</h2>
 <p>This measure indicates the number of people in acute distress who are not being served by the regular, community-based mental health system. A high rate suggests a fragmented or insufficient system of care.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>Oregon Health Authority (OHA)</strong>. They collect hospital discharge data, which includes ED visits.</p></li>
+<li><p><strong>How to Access in R</strong>: This data is often sensitive and may not be available via a public API. We would start by exploring OHA’s public data portals. If not available, this would likely require a formal data request.</p></li>
+</ul>
+<section id="part-1-guidance-for-querying-essence" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-guidance-for-querying-essence">Part 1: Guidance for Querying ESSENCE</h3>
+<p>To get data on Emergency Department (ED) visits for behavioral health crises, you’ll want to build a query that captures visits for mental health conditions, substance use, overdoses, and suicide-related behaviors. Here’s a recommended approach:</p>
+<ol type="1">
+<li><p><strong>Use Pre-built Syndromes First</strong>:</p>
+<ul>
+<li>Check if your jurisdiction’s ESSENCE has pre-built syndromes like “Mental Health,” “Substance Use,” or “Suicide and Self-Harm.” These are often the most reliable and have been validated locally.</li>
+</ul></li>
+<li><p><strong>Query the Chief Complaint (CC) and Discharge Diagnosis (DD) Fields</strong>:</p>
+<ul>
+<li>If you build a custom query, use a combination of keywords in the chief complaint and ICD-10 codes in the diagnosis fields.</li>
+</ul></li>
+<li><p><strong>Define Your Terms</strong>:</p>
+<ul>
+<li><p><strong>For Mental Health Crises</strong>:</p>
+<ul>
+<li><p><strong>Keywords</strong>: <code>anxiety</code>, <code>depression</code>, <code>psychosis</code>, <code>psychiatric</code>, <code>behavioral health</code>, <code>bipolar</code>, <code>schizophrenia</code>, <code>homicidal ideation</code></p></li>
+<li><p><strong>ICD-10 Codes</strong>: The <code>F00-F99</code> block (“Mental, Behavioral and Neurodevelopmental disorders”) is your primary tool. You can select the whole block or specific ranges like <code>F10-F19</code> (substance use disorders), <code>F20-F29</code> (schizophrenia), <code>F30-F39</code> (mood disorders), <code>F40-F48</code> (anxiety disorders).</p></li>
+</ul></li>
+<li><p><strong>For Suicide and Self-Harm</strong>:</p>
+<ul>
+<li><p><strong>Keywords</strong>: <code>suicide</code>, <code>suicidal</code>, <code>self harm</code>, <code>cutting</code>, <code>SI</code> (suicidal ideation)</p></li>
+<li><p><strong>ICD-10 Codes</strong>: <code>T14.91</code> (suicide attempt), <code>X60-X84</code> (intentional self-harm).</p></li>
+</ul></li>
+<li><p><strong>For Overdoses</strong>:</p>
+<ul>
+<li><p><strong>Keywords</strong>: <code>overdose</code>, <code>OD</code>, <code>ingestion</code></p></li>
+<li><p><strong>ICD-10 Codes</strong>: <code>T36-T50</code> (poisoning by drugs).</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Set Query Parameters</strong>:</p>
+<ul>
+<li><p><strong>Time Period</strong>: Select your desired date range (e.g., the last five years).</p></li>
+<li><p><strong>Geography</strong>: Filter for hospitals located in Multnomah County.</p></li>
+<li><p><strong>Export</strong>: Run the query and export the results as a time-series (e.g., weekly counts). Be sure to <strong>export it as a CSV file</strong>.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="part-2-r-code-for-analyzing-the-exported-data" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-r-code-for-analyzing-the-exported-data">Part 2: R Code for Analyzing the Exported Data</h3>
+<p>Once you have the CSV file from ESSENCE, this R code provides a template to load, clean, and visualize it. You may need to adjust the column names in the code to match your specific export.</p>
+</section>
 </section>
 <section id="mental-health-related-civil-commitment-rates" class="level2">
 <h2 class="anchored" data-anchor-id="mental-health-related-civil-commitment-rates">Mental Health-Related Civil Commitment Rates</h2>
 <p>This measures the number of individuals involuntarily placed in a treatment facility due to a mental health crisis. It can highlight gaps in preventative and community-based care.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: This data is highly localized and held by the <strong>Multnomah County Courts</strong> and local law enforcement agencies.</p></li>
+<li><p><strong>How to Access in R</strong>: It’s very unlikely this data is available via an API. The most probable path would be a public records request to get aggregated, de-identified data in a flat file (like a CSV).</p></li>
+</ul>
 </section>
 <section id="criminal-justice-system-involvement-mental-health-related-arrests" class="level2">
 <h2 class="anchored" data-anchor-id="criminal-justice-system-involvement-mental-health-related-arrests">Criminal Justice System Involvement (mental health-related arrests)</h2>
 <p>The number of arrests and incarcerations for individuals with mental health disorders indicates a failure to provide effective, community-based support.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: This data is highly localized and held by the <strong>Multnomah County Courts</strong> and local law enforcement agencies.</p></li>
+<li><p><strong>How to Access in R</strong>: It’s very unlikely this data is available via an API. The most probable path would be a public records request to get aggregated, de-identified data in a flat file (like a CSV).</p></li>
+</ul>
 </section>
 <section id="substance-use-disorder-treatment-admission-and-completion-rates" class="level2">
 <h2 class="anchored" data-anchor-id="substance-use-disorder-treatment-admission-and-completion-rates">Substance Use Disorder Treatment Admission and Completion Rates</h2>
 <p>This is a key measure of the system’s effectiveness. High admission rates show a need for services, while low completion rates can point to barriers in treatment.</p>
+<ul>
+<li><p><strong>Primary Source</strong>: <strong>Substance Abuse and Mental Health Services Administration (SAMHSA)</strong>. They manage the <strong>Treatment Episode Data Set (TEDS)</strong>.</p></li>
+<li><p><strong>How to Access in R</strong>: SAMHSA provides public-use data files for TEDS admissions (TEDS-A) and discharges (TEDS-D) that can be downloaded and analyzed in R.</p></li>
+</ul>
+<section id="how-to-find-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-find-the-data">How to Find the Data</h3>
+<ol type="1">
+<li><p><strong>Search the OHA Website</strong>: Navigate to the OHA website and search for reports or data dashboards related to “substance use disorder treatment,” “behavioral health data,” or “TEDS report.”</p></li>
+<li><p><strong>Locate County-Level Data</strong>: Look for tables within these reports that show treatment admissions and discharges (or completions) broken down by county.</p></li>
+<li><p><strong>Extract the Numbers</strong>: Find the most recent annual counts for Multnomah County for both <strong>total admissions</strong> and <strong>treatment completions</strong>. If a downloadable data file (CSV/Excel) is available, that’s ideal. If not, you can manually pull the numbers from a table in a PDF report.</p></li>
+</ol>
+<p>Example code:</p>
+</section>
 </section>
 </section>
 <section id="process-and-systems-based-measures" class="level1">
 <h1>Process and Systems-based Measures</h1>
 <p>These measures evaluate the functioning of the behavioral health system itself, focusing on how services are delivered and used.</p>
+<ul>
+<li><p><strong>Wait Times, Patient Satisfaction, Retention Rates</strong>: Your best bet for these would be to look for reports or publications from the <strong>Oregon Health Authority</strong> or <strong>Multnomah County Health Department</strong>. It’s unlikely you’ll find a raw, queryable dataset for these.</p></li>
+<li><p><strong>Integration of Behavioral and Physical Health Care</strong>: This is more of a qualitative or composite measure. You might find metrics in OHA reports about the number of certified coordinated care organizations or patient-centered medical homes, but it won’t be a simple number you can pull from an API.</p></li>
+</ul>
 <section id="wait-times-for-behavioral-health-appointments" class="level2">
 <h2 class="anchored" data-anchor-id="wait-times-for-behavioral-health-appointments">Wait Times for Behavioral Health Appointments</h2>
 <p>Long wait times are a significant barrier to care. This measure directly reflects the accessibility and capacity of the behavioral health system.</p>
