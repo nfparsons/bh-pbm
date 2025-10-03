@@ -1,0 +1,230 @@
+---
+format: html
+---
+
+This is the most visible form of unstable housing. 
+
+-   **Definitions**: 
+
+      - **Unsheltered**: People living on the streets, in vehicles, or in other places not meant for human habitation.
+
+      - **Sheltered**: People in emergency shelters, transitional housing, or domestic violence shelters.
+
+**Primary Source**: **[Multnomah County Homeless Services Department](<https://hsd.multco.us/data-dashboard/>)**. Shows monthly counts of how many people are experiencing homelessness in Multnomah County, broken down by sheltered vs. unsheltered. Date range available: January 2024 to present (monthly).
+
+**Secondary Source**: **[U.S. Department of Housing and Urban Development (HUD)](<https://www.huduser.gov/portal/datasets/ahar.html>)**. They publish the Annual Homeless Assessment Report (AHAR) to Congress, which includes point-in-time counts of homelessness. Date range available: 2007-2024 (yearly).
+
+**Potential Source**: The ideal source would be the actual 'By Name List of people experiencing homelessness' maintained by the Multnomah County Homeless Services Department. This would provide the most accurate and up-to-date counts, including demographic breakdowns.
+
+**How to Access**: This data is saved in `data/homelessness_counts_multnomah_2007-present.csv` in this project repository. This file needs to be updated by hand. 
+
+```{r}
+# -----------------------------------------------------------------------------
+# 1. Setup/Dependencies (Package Manager)
+# -----------------------------------------------------------------------------
+
+if (!require("pacman")) {
+  install.packages("pacman", repos = "https://cran.rstudio.org")
+}
+library(pacman)
+
+p_load(
+  here,          # Folder/file management
+  conflicted,    # Package conflict management
+  english,       # Translate integers into text
+  labelled,      # Manipulate variable/value metadata
+  rlang,         # Functions for base R and tidyverse features
+  xfun,          # Miscellaneous functions
+  rio,           # Universal import/export
+  archive,       # Archive files
+  filesstrings,  # String manipulation
+  googledrive,   # Interact with Google Drive
+  rsconnect,     # RStudio Connect
+  tidyverse,     # Data manipulation and visualization
+  lubridate,    # Date manipulation
+  flextable,     # Create tables for reporting
+  plotly         # Interactive visualizations
+)
+
+```
+
+
+```{r}
+# Load data
+dat_homelessness <- import(
+  here("data", "homelessness_counts_multnomah_2007-present.csv")
+)
+
+# Filter data
+dat_homelessness <- dat_homelessness %>%
+  mutate(date = mdy(date)) %>%
+  filter(category %in% c("Unsheltered", "Sheltered")) %>%
+  mutate(
+    tooltip_text = paste(
+      "Date:", format(date, "%m-%d-%Y"),
+      "<br>Count:", n,
+      "<br>Category:", str_to_title(category)
+    )
+  )
+
+## Data table
+
+# Create a flextable
+tab_homelessness <- dat_homelessness %>%
+  filter(category == "Unsheltered") %>%
+  select(-category) %>%
+  flextable() %>%
+  set_caption(caption = "Homelessness (Unsheltered) PIT Counts by Date") %>%
+  colformat_double(j = "date", digits = 0) %>%
+  set_header_labels(date = "Date", n = "Unsheltered \nCount") %>%
+  bold(part = "header") %>%
+  autofit() %>%
+  theme_booktabs()
+```
+
+::: {.content-visible when-format="pdf"}
+```{r}
+## Data visualization
+# Create a line chart with both categories
+ggplot(dat_homelessness, aes(x = date, y = n)) +
+  
+  # Add a vertical dashed line at March 1, 2020
+  geom_vline(
+    xintercept = as.Date("2020-03-01"),
+    color = "grey50",
+    linetype = "dashed",
+    linewidth = 0.5,
+    alpha = 0.7
+  ) +
+  
+  # Add the 'Sheltered' line and points with 50% alpha
+  geom_line(data = filter(dat_homelessness, category == "Sheltered"), 
+            linewidth = 1, color = "#72CCD4", alpha = 0.5) +
+  geom_point(data = filter(dat_homelessness, category == "Sheltered"), 
+             size = 1, color = "#72CCD4", alpha = 0.5) +
+  
+  # Add the 'Unsheltered' line and points
+  geom_line(data = filter(dat_homelessness, category == "Unsheltered"), 
+            linewidth = 1, color = "#8C183E") +
+  geom_point(data = filter(dat_homelessness, category == "Unsheltered"), 
+             size = 1, color = "#8C183E") +
+  
+  # Add a dashed line segment to indicate the data gap for Unsheltered
+  geom_segment(
+    aes(x = as.Date("2020-01-01"), y = 2037,
+        xend = as.Date("2022-01-01"), yend = 3057),
+    color = "#8C183E",
+    linetype = "dashed",
+    alpha = 0.5,
+    linewidth = 1
+  ) +
+  
+  # Add text labels and indicator lines for each category
+  # Add the Unsheltered label
+  geom_text(
+    data = data.frame(
+      x = as.Date("2009-01-01"),
+      y = 1900,
+      label = "Unsheltered"
+    ),
+    mapping = aes(x = x, y = y, label = label),
+    inherit.aes = FALSE, 
+    color = "#8C183E"
+  ) + 
+  
+  # Add the Sheltered label
+  geom_text(
+    data = data.frame(
+      x = as.Date("2009-01-01"),
+      y = 2900,
+      label = "Sheltered"
+    ),
+    mapping = aes(x = x, y = y, label = label),
+    inherit.aes = FALSE, 
+    color = "#72CCD4"
+  ) +
+  
+  labs(title = "Trends in Homelessness Counts Over Time, \nMultnomah County",
+       x = "Date",
+       y = "Number of Individuals") +
+  theme_minimal() +
+  scale_x_date(breaks = "3 years", date_labels = "%Y") +
+  theme(legend.position = "none")
+```
+:::
+
+::: {.content-visible when-format="html"}
+```{r}
+#| include: true
+
+## Data visualization - Interactive Plotly Chart (Directly)
+
+# Create the plot object
+p_plotly <- plot_ly(data = dat_homelessness) %>%
+  
+  # Add the 'Sheltered' trace (line + markers)
+  add_trace(
+    data = filter(dat_homelessness, category == "Sheltered"),
+    x = ~date, 
+    y = ~n,
+    type = 'scatter',
+    mode = 'lines+markers',
+    name = 'Sheltered',
+    line = list(color = "#72CCD4", width = 3),
+    marker = list(color = "#72CCD4", size = 4),
+    text = ~tooltip_text,
+    hovertemplate = '%{text}<extra></extra>' # Use the pre-built text, hide trace name
+  ) %>%
+  
+  # Add the 'Unsheltered' trace (line + markers)
+  add_trace(
+    data = filter(dat_homelessness, category == "Unsheltered"),
+    x = ~date, 
+    y = ~n,
+    type = 'scatter',
+    mode = 'lines+markers',
+    name = 'Unsheltered',
+    line = list(color = "#8C183E", width = 3),
+    marker = list(color = "#8C183E", size = 4),
+    text = ~tooltip_text,
+    hovertemplate = '%{text}<extra></extra>'
+  ) %>%
+  
+  # Use layout() to add titles, annotations, and shapes
+  plotly::layout(
+    title = "Trends in Homelessness Counts Over Time, Multnomah County",
+    xaxis = list(title = "", tickformat = "%Y", dtick = "M36"), # ticks every 3 years
+    yaxis = list(title = "Number of Individuals"),
+    
+    # Add the vertical line and dashed segment as shapes
+    shapes = list(
+      # Vertical line for COVID-19
+      list(
+        type = "line",
+        x0 = "2020-03-01", x1 = "2020-03-01",
+        y0 = 0, y1 = 1, yref = "paper", # yref='paper' spans the whole y-axis
+        line = list(color = "grey50", dash = "dash")
+      ),
+      # Dashed segment for data gap
+      list(
+        type = "line",
+        x0 = "2020-01-01", x1 = "2022-01-01",
+        y0 = 2037, y1 = 3057,
+        line = list(color = "#8C183E", dash = "dash")
+      )
+    ),
+    
+    # Control the legend position
+    legend = list(
+      x = 0.3,
+      y = -0.2,
+      xanchor = 'left',
+      yanchor = 'bottom',
+      orientation = 'h'
+    )
+  )
+
+# Display the plot
+p_plotly
+```
+

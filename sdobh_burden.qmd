@@ -1,0 +1,129 @@
+---
+execute: 
+  echo: false
+  error: false
+  message: false
+  warning: false
+---
+
+A household is considered "cost-burdened" if it spends more than 30% of its income on housing costs, including rent/mortgage and utilities. This can be further broken down into severely cost-burdened if the amount exceeds 50%. This is a huge indicator of housing insecurity.
+
+-   **Primary Source**: **U.S. Census Bureau's American Community Survey (ACS)**. This is the gold standard for this type of socioeconomic data at small geographic levels.
+
+-   **How to Access**: The `tidycensus` package is perfect for this. It provides a straightforward way to query the Census API and get data directly into a tidy `tibble`.
+
+-   **Key Variables**: Table `B25070` (Gross Rent as a Percentage of Household Income) and `B25091` (Mortgage Status by Selected Monthly Owner Costs as a Percentage of Household Income). We would sum the categories for households paying 30% or more.
+
+```{r}
+#| label: sdobh-burden-setup
+#| eval: true
+
+# -----------------------------------------------------------------------------
+# 1. Setup/Dependencies (Package Manager)
+# -----------------------------------------------------------------------------
+
+if (!require("pacman")) {
+  install.packages("pacman", repos = "https://cran.rstudio.org")
+}
+library(pacman)
+
+p_load(
+  here,          # Folder/file management
+  conflicted,    # Package conflict management
+  english,       # Translate integers into text
+  labelled,      # Manipulate variable/value metadata
+  rlang,         # Functions for base R and tidyverse features
+  xfun,          # Miscellaneous functions
+  rio,           # Universal import/export
+  archive,       # Archive files
+  filesstrings,  # String manipulation
+  googledrive,   # Interact with Google Drive
+  rsconnect,     # RStudio Connect
+  tidyverse,     # Data manipulation and visualization
+  lubridate,    # Date manipulation
+  flextable,     # Create tables for reporting
+  plotly,        # Interactive visualizations
+  tidycensus    # Census data access
+)
+```
+
+
+```{r}
+#| label: housing-burden-timeseries
+#| depends-on: ["setup"]
+
+# -----------------------------------------------------------------------------
+# 1. Get Time-Series Data from the Census API
+# -----------------------------------------------------------------------------
+# Define the years we want to pull data for.
+years_to_get <- 2012:2023
+
+# Define the ACS variables for rent burden
+acs_rent_burden_vars <- c(
+  total_renters      = "B25070_001",
+  rent_30_to_35_pct  = "B25070_007",
+  rent_35_to_40_pct  = "B25070_008",
+  rent_40_to_50_pct  = "B25070_009",
+  rent_50_plus_pct   = "B25070_010"
+)
+
+# Use purrr::map_dfr to loop through each year, get data, and row-bind results
+dat_rent_burden_ts <- map_dfr(years_to_get, ~ {
+  get_acs(
+    geography = "county",
+    state = "OR",
+    county = "Multnomah",
+    variables = acs_rent_burden_vars,
+    year = .x, # .x is the placeholder for the current year in the loop
+    survey = "acs5"
+  ) %>%
+    mutate(YEAR = .x)
+})
+
+# -----------------------------------------------------------------------------
+# 2. Calculate the final housing cost burden measure for each year
+# -----------------------------------------------------------------------------
+dat_rent_burden <- dat_rent_burden_ts %>%
+  # Remove the margin of error column before pivoting
+  select(-moe) %>%
+  # The data is in a long format, so we pivot it wider for calculation
+  pivot_wider(names_from = variable, values_from = estimate) %>%
+  # Calculate the percentage and create the tooltip text for each year
+  mutate(
+    n_cost_burdened = rent_30_to_35_pct + rent_35_to_40_pct + rent_40_to_50_pct + rent_50_plus_pct,
+    pct_cost_burdened = (n_cost_burdened / total_renters) * 100,
+    tooltip_text = paste0(
+      "Year: ", YEAR, 
+      "<br>Percent Cost-Burdened: ", round(pct_cost_burdened, 1), "%",
+      "<br>Total Renters: ", format(total_renters, big.mark = ",")
+    )
+  ) %>%
+  select(year = YEAR, pct_cost_burdened, tooltip_text)
+
+# -----------------------------------------------------------------------------
+# 3. Check the final data structure
+# -----------------------------------------------------------------------------
+# This kable call now correctly shows the final 3-column data frame
+knitr::kable(
+  dat_rent_burden,
+  digits = 1,
+  caption = "Time-Series of Housing Cost Burden for Renters"
+)
+
+
+# -----------------------------------------------------------------------------
+# 3. Create the visualizations
+# -----------------------------------------------------------------------------
+
+
+# -----------------------------------------------------------------------------
+# 5. Display the final data table
+# -----------------------------------------------------------------------------
+# We can use kable() from knitr for a clean table in the output.
+# knitr::kable(
+#   dat_rent_burden,
+#   digits = 1,
+#   caption = "Housing Cost Burden for Renters in Multnomah County (2019-2023 ACS)",
+#   col.names = c("Data Period", "Total Renter Households", "Number Cost-Burdened", "Percent Cost-Burdened")
+# )
+```

@@ -1,13 +1,89 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "Behavioral Health Population-based Measures"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  title: "Behavioral Health Outcomes Dashboard"
+  
+  # Options
+  bread-crumbs: false
+  
+  # This creates the navbar structure
+  sidebar:
+    contents:
+      - section: "Social Determinants of Behavioral Health"
+        contents: 
+          - text: "Homelessness (Sheltered and Unsheltered)"
+            href: sdobh_housing.qmd
+          - text: "Housing Cost Burden"
+            href: sdobh_burden.qmd
+          - text: "'Doubled-Up' Households"
+            href: sdobh_doubledup.qmd
+          - text: "Residential Instability"
+            href: sdobh_residential.qmd
+          - text: "Eviction Rates"
+            href: sdobh_eviction.qmd
+          - text: "Educational Attainment"
+            href: sdobh_education.qmd
+          - text: "Unemployment Rates"
+            href: sdobh_unemployment.qmd
+          - text: "Access to Healthcare"
+            href: sdobh_healthcare.qmd
+          - text: "Community Social Cohesion and Support Networks"
+            href: sdobh_socialcohesion.qmd
+          - text: "Adverse Childhood Experiences (ACEs)"
+            href: sdobh_aces.qmd
+      - text: "---"
+      - section: "Outcome-based Behavioral Health Measures"
+        contents:
+          - text: "Fatal Overdose Rate"
+            href: obhm_overdose.qmd
+          - text: "Suicide Rates"
+            href: obhm_suicide.qmd
+          - text: "Emergency Department Visits"
+            href: obhm_edvisit.qmd
+          - text: "Civil Commitment Rates"
+            href: obhm_civil.qmd
+          - text: "Criminal Justice System Involvement"
+            href: obhm_dcj.qmd
+          - text: "Substance Use Disorder Treatment Admission and Completion Rates"
+            href: obhm_sud.qmd
+      - text: "---"
+      - section: "Process- and Systems-based Measures"
+        contents:
+          - text: "Access to Care"
+            href: psbm_access.qmd
+          - text: "Quality of Care"
+            href: psbm_quality.qmd
+          - text: "Care Coordination"
+            href: psbm_coordination.qmd
+          - text: "Patient Experience"
+            href: psbm_experience.qmd
+      
+format:
+  html:
+    theme: cosmo
+    toc: true
+    page-layout: full
 
 editor: source
 
+execute: 
+  echo: false
+  eval: true
+  error: false
+  message: false
+  warning: false
+  include: false
+
+# your-project-folder/
+# ├── _quarto.yml
+# ├── index.qmd
+# ├── depression.qmd
+# ├── anxiety.qmd
+# ├── stress.qmd
+# ├── substance_use.qmd
+# ├── sdoh.qmd                # <-- New file for the nested tabset
+# ├── sdoh_housing.qmd        # <-- New file for a nested tab
+# ├── sdoh_education.qmd      # <-- New file for a nested tab
+# └── sdoh_income.qmd         # <-- New file for a nested tab
